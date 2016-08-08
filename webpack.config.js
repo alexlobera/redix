@@ -20,7 +20,7 @@ var config = {
     ]
   },
   output: {
-    library: 'ReDIx',
+    library: 'Redix',
     libraryTarget: 'umd'
   },
   plugins: [

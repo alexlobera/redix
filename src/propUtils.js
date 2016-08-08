@@ -29,7 +29,7 @@ export const getPropType = (prop) => {
   }
 }
 
-const mapPropTypesToProps = (props) => {
+export const mapPropTypesToProps = (props) => {
   const reducedProps = reduceProps(props);
   const propTypes = {};
   for (let key in reducedProps) {
@@ -37,5 +37,3 @@ const mapPropTypesToProps = (props) => {
   }
   return propTypes;
 }
-
-export default mapPropTypesToProps;
