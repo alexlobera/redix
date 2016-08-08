@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const reduceProps = (props) => (
   Object.keys(props).reduce((reducedProps, propKey) => {
     if (propKey !== 'children') {
