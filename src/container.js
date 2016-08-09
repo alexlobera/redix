@@ -11,3 +11,5 @@ class Container extends React.Component {
     this.newProps = Object.assign({}, this.newProps, props);
   }
 }
+
+export default Container;
