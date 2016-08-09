@@ -1,5 +1,5 @@
 import Container from './container';
 import DependencyInjector from './dependencyInjector';
-import MockedComponent from './mockedComponent';
+import ContainedComponent from './containedComponent';
 
-export { Container, DependencyInjector, MockedComponent }
+export { Container, DependencyInjector, ContainedComponent }
