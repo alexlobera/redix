@@ -6,7 +6,7 @@ class Container extends React.Component {
     this.setProps(props.injectProps);
   }
   render() {
-    let ChildComponent = this.props.injectComponent || this.containerComp;
+    let ChildComponent = this.props.injectComponent || this.containedComponent;
     return (
       <ChildComponent {...this.props} {...this.newProps}/>
     );
