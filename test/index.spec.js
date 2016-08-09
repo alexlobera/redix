@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import DependencyInjector from '../src/index';
+import { DependencyInjector } from '../src/index';
 import React from 'react';
 
 describe('DependencyInjector', () => {

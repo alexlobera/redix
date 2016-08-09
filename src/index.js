@@ -1,19 +1,5 @@
-import React from 'react';
-import { reduceProps, mapPropTypesToProps } from './propUtils';
+import Container from './container';
+import DependencyInjector from './dependencyInjector';
+import MockedComponent from './mockedComponent';
 
-const DependencyInjector = (props) => {
-  class DIR extends React.Component {
-    getChildContext() {
-      return reduceProps(this.props);
-    }
-    render() {
-      return this.props.children;
-    }
-  }
-
-  DIR.childContextTypes = mapPropTypesToProps(props);
-
-  return <DIR {...props} />;
-}
-
-export default DependencyInjector;
+export { Container, DependencyInjector, MockedComponent }
