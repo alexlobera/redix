@@ -1,7 +1,7 @@
 {
   "name": "redix",
   "version": "1.0.11",
-  "description": "Dependency injection component for React",
+  "description": "REact Dependency Injection component/container/X",
   "main": "./lib/index.js",
   "scripts": {
     "build:lib": "babel src --out-dir lib",
