@@ -1,7 +1,7 @@
 import React from 'react';
 
-const ContainedComponent = containedComponent => props => {
-  containedComponent.props = props;
+const ContainedComponent = component => props => {
+  component.props = props;
   return (<i></i>)
 };
 
