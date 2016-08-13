@@ -1,5 +1,11 @@
 import React from 'react';
 
+// This component is for test doubles, that's why we return a "dummy" <i></i>
+export const hookProps = component => props => {
+  component.props = props;
+  return (<i></i>)
+};
+
 export const reduceProps = (props) => (
   Object.keys(props).reduce((reducedProps, propKey) => {
     if (propKey !== 'children') {

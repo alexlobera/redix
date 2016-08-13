@@ -1,5 +1,5 @@
 import Container from './container';
 import DependencyInjector from './dependencyInjector';
-import ContainedComponent from './containedComponent';
+import { hookProps } from './propUtils';
 
-export { Container, DependencyInjector, ContainedComponent }
+export { Container, DependencyInjector, hookProps }
