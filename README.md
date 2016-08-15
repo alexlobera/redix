@@ -59,7 +59,7 @@ export default connect(
 ```
 4 . No render method
 
-Rendering the 'view' is not the containers' concern, so you should not write anything in the render method of the container besides i) what component you want to render and ii) which props you want to pass down. And that is done by the redix Container class.
+Rendering the 'view' is not the concern of the container, that is the concern of the presentational component. Therefore you should not write anything in the render method of the container besides i) what component you want to render and ii) which props you want to pass down. And that is done by the redix Container class.
 
 5 . Write a test for your container
 
