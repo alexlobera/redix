@@ -120,7 +120,7 @@ https://github.com/alexlbr/react-bootcamp-2016-august/blob/master/test/unit/cont
 https://github.com/alexlbr/react-bootcamp-2016-august/blob/master/src/containers/PhotoListContainer.js
 
 `git clone git@github.com:alexlbr/react-bootcamp-2016-august.git`
+
 `cd react-bootcamp-2016-august`
+
 `npm i && npm test`
-
-
