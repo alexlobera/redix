@@ -39,7 +39,7 @@ class PhotoListContainer extends Container {
   }
 ```
 
-3 . By extending the Redix container, props that are functions become functions of the container. In other words instead of this.props.fetchPhotos you can do this.fetchPhotos. You need to use the this.fetchPhotos if you want to easly mock that function. Why? props are read only, and many functions are injected by third modules that make it very hard to mock, like actions set by the Redux connect mapDispatchToProps.
+3 . By extending the Redix container, props that are functions become functions of the container. In other words instead of this.props.fetchPhotos you can do this.fetchPhotos. You need to use the this.fetchPhotos if you want to easily mock that function. Why? props are read only, and many functions are injected by third modules that make it very hard to mock, like actions set by the Redux connect mapDispatchToProps.
 
 ```
 class PhotoListContainer extends Container
@@ -114,10 +114,12 @@ describe('PhotoList container', () => {
 
 ```
 
-## Examples:
+## Examples
 
+### Container
 https://github.com/alexlbr/react-bootcamp-2016-august/blob/master/test/unit/containers/PhotoListContainer.spec.js
 
+### Test
 https://github.com/alexlbr/react-bootcamp-2016-august/blob/master/src/containers/PhotoListContainer.js
 
 `git clone git@github.com:alexlbr/react-bootcamp-2016-august.git`
