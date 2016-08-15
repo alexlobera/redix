@@ -74,7 +74,7 @@ describe('PhotoList container', () => {
 		const test = {};
 		const FakePhotoList = hookProps(test);
 		const injectedFunctions = {
-		fetchPhotos: sinon.spy(() => (Promise.resolve())),
+			fetchPhotos: sinon.spy(() => (Promise.resolve())),
 		};
 		const photos = [{
 		  "albumId": 1,
