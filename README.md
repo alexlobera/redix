@@ -14,7 +14,7 @@ React Dependency Injection for containers and components
 
 ## How to use it
 
-1. Your container components should extend Redix Container instead of React Component:
+1 . Your container components should extend Redix Container instead of React Component:
 
 ```
 import { Container } from 'redix';
@@ -23,8 +23,11 @@ class PhotoListContainer extends Container {
 ```
 
 2 . The constructor of your container should call:
+
 	a. super(props). You must pass props in the super() call since props are used in the parent container's constructor.
+
 	b. this.setComponent(PhotoList); Specify the presentational component we want to render.
+	
 	c. this.setProps({ ... }). Set the props we want to pass down to the presentational component
 
 ```
