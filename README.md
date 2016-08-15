@@ -95,7 +95,7 @@ describe('PhotoList container', () => {
 		  { context: { store: store }}
 		);
 		
-		//Example using TestUtils
+		//Example using TestUtils and the generic Dependency Injector
 		TestUtils.renderIntoDocument(
 		<DI store={store}>
 		  <PhotoListContainer
