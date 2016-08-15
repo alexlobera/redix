@@ -24,11 +24,9 @@ class PhotoListContainer extends Container {
 
 2 . The constructor of your container should call:
 
-	a. super(props). You must pass props in the super() call since props are used in the parent container's constructor.
-
-	b. this.setComponent(PhotoList); Specify the presentational component we want to render.
-	
-	c. this.setProps({ ... }). Set the props we want to pass down to the presentational component
+- super(props). You must pass props in the super() call since props are used in the parent container's constructor.
+- this.setComponent(PhotoList); Specify the presentational component we want to render.
+- this.setProps({ ... }). Set the props we want to pass down to the presentational component
 
 ```
 class PhotoListContainer extends Container {
