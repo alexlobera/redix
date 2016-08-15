@@ -88,11 +88,11 @@ describe('PhotoList container', () => {
 		
 		//Example using Enzyme
 		const container = mount(
-		<PhotoListContainer
-		  functions={injectedFunctions}
-		  component={FakePhotoList}
-		/>,
-		{ context: { store: store }}
+		  <PhotoListContainer
+			functions={injectedFunctions}
+			component={FakePhotoList}
+		  />,
+		  { context: { store: store }}
 		);
 		
 		//Example using TestUtils
