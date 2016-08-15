@@ -122,6 +122,8 @@ https://github.com/alexlbr/react-bootcamp-2016-august/blob/master/test/unit/cont
 ### Test
 https://github.com/alexlbr/react-bootcamp-2016-august/blob/master/src/containers/PhotoListContainer.js
 
+### Try the example yourself
+
 `git clone git@github.com:alexlbr/react-bootcamp-2016-august.git`
 
 `cd react-bootcamp-2016-august`
