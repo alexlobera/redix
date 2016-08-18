@@ -3,7 +3,8 @@ import React from 'react';
 class Container extends React.Component {
   constructor(props) {
     super(props);
-
+    this.childComponentExpectedProps = [];
+    this.childComponentProps = {};
     // props that are functions become a property function of the Container object.
     // In other words, this.props.doSomething() becomes this.doSomething().
     // The reason is that I want to be able to inject those dependencies, for testing purposes for instance.
@@ -19,21 +20,21 @@ class Container extends React.Component {
   // This is the component that my container is going to render
   setComponent(component) {
     this.childComponent = component;
+    for (let key in component.propTypes) {
+      this.childComponentExpectedProps.push(key);
+    }
   }
 
-  // These are the props that I want to pass down to the component that my container is rendering
+  // These are props that I want to explicitly pass down to the component that my container is rendering.
+  // Idealy you shouldn't use this because the child component your container is rendering
+  // should specify the props it needs by setting its propTypes 
   setProps(props) {
     this.childComponentProps = Object.assign({}, this.childComponentProps, props);
   }
 
-  // This is a helper, it does 2 things:
-  // 1. It binds a function to the container's context, meaning: this.doSomething = this.doSomething.bind(this)
-  // 2. It sets the function as a prop so it will be passed down to the component the container is rendering. 
-  bindProp(prop) {
-    this[prop] = this[prop].bind(this);
-    const newProp = {};
-    newProp[prop] = this[prop];
-    this.childComponentProps = Object.assign({}, this.childComponentProps, newProp);
+  // this is just syntactic sugar
+  bindThis(func) {
+    this[func] = this[func].bind(this);
   }
 
   render() {
@@ -43,9 +44,20 @@ class Container extends React.Component {
     // 2. Via constructor of the component that extends this Container. 
     //    It'll be available as this.childComponent
     // this.props is checked first to enable dependency injection
-    let ChildComponent = this.props.component || this.childComponent;
+    const ChildComponent = this.props.component || this.childComponent;
     return (
-      <ChildComponent {...this.childComponentProps}/>
+      <ChildComponent
+          {...this.childComponentExpectedProps.reduce((previousValue, key) => {
+            if (this.childComponentProps[key]) {
+              previousValue[key] = this.childComponentProps[key];
+            } else if (this.hasOwnProperty(key)) {
+              previousValue[key] = this[key];
+            } else if (this.props[key]) {
+              previousValue[key] = this.props[key];
+            }
+            return previousValue;
+          }, {})}
+      />
     );
   }
 }
