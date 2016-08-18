@@ -1,6 +1,6 @@
 {
   "name": "redix",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "REact Dependency Injection component/container",
   "main": "./lib/index.js",
   "scripts": {
