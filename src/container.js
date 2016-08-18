@@ -18,16 +18,26 @@ class Container extends React.Component {
   }
   
   // This is the component that my container is going to render
-  setComponent(component) {
+  setComponent(component, propTypes) {
     this.childComponent = component;
-    for (let key in component.propTypes) {
+    propTypes = component.propTypes || propTypes;
+    console.log('asdfasdfafdasdf', propTypes);
+    if (!propTypes) {
+      const warning = `Warning, the component you are trying to render using the Redix Container has no propTypes`;
+      if (console.error) {
+         console.error(warning);
+      } else {
+        console.log(warning);
+      }
+    }
+    for (let key in propTypes) {
       this.childComponentExpectedProps.push(key);
     }
   }
 
-  // These are props that I want to explicitly pass down to the component that my container is rendering.
-  // Idealy you shouldn't use this because the child component your container is rendering
-  // should specify the props it needs by setting its propTypes 
+  // These are props that you want to explicitly pass down to the component that the container is rendering.
+  // This is not needed if you name the class properties and functions that you want to pass down
+  // with the same name as any of the presentational component's propTypes 
   setProps(props) {
     this.childComponentProps = Object.assign({}, this.childComponentProps, props);
   }
@@ -52,7 +62,7 @@ class Container extends React.Component {
               previousValue[key] = this.childComponentProps[key];
             } else if (this.hasOwnProperty(key)) {
               previousValue[key] = this[key];
-            } else if (this.props[key]) {
+            } else if (typeof this.props[key] !== 'undefined') {
               previousValue[key] = this.props[key];
             }
             return previousValue;
