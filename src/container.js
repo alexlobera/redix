@@ -1,9 +1,12 @@
 import React from 'react';
+import { logWarning } from './propUtils';
 
 class Container extends React.Component {
   constructor(props) {
     super(props);
-    this.childComponentExpectedProps = [];
+    if (!props) {
+      logWarning('You did not pass any props to the super() function in the Container constructor');
+    }
     this.childComponentProps = {};
     // props that are functions become a property function of the Container object.
     // In other words, this.props.doSomething() becomes this.doSomething().
@@ -16,28 +19,26 @@ class Container extends React.Component {
       }
     }
   }
-  
+
   // This is the component that my container is going to render
   setComponent(component, propTypes) {
     this.childComponent = component;
     propTypes = component.propTypes || propTypes;
-    console.log('asdfasdfafdasdf', propTypes);
     if (!propTypes) {
-      const warning = `Warning, the component you are trying to render using the Redix Container has no propTypes`;
-      if (console.error) {
-         console.error(warning);
-      } else {
-        console.log(warning);
-      }
+      logWarning(`The component you are trying to render using the Redix Container has no propTypes`);
     }
+
+    let src = 'return {';
     for (let key in propTypes) {
-      this.childComponentExpectedProps.push(key);
+      src = src + `${key}: childComponentProps['${key}'] || this['${key}'] || props['${key}'],`;
     }
+    src = src.slice(0, -1) + '}';
+    this.getProps = Function('childComponentProps', 'props', src);
   }
 
   // These are props that you want to explicitly pass down to the component that the container is rendering.
   // This is not needed if you name the class properties and functions that you want to pass down
-  // with the same name as any of the presentational component's propTypes 
+  // with the same name as any of the presentational component's propTypes
   setProps(props) {
     this.childComponentProps = Object.assign({}, this.childComponentProps, props);
   }
@@ -49,24 +50,14 @@ class Container extends React.Component {
 
   render() {
     // The component that will be rendered can be set in two different ways:
-    // 1. Via Container's props, example <ChatContainer component="MockChat" />. 
+    // 1. Via Container's props, example <ChatContainer component="MockChat" />.
     //    It'll be available in the Container as this.props.component
-    // 2. Via constructor of the component that extends this Container. 
+    // 2. Via constructor of the component that extends this Container.
     //    It'll be available as this.childComponent
     // this.props is checked first to enable dependency injection
     const ChildComponent = this.props.component || this.childComponent;
     return (
-      <ChildComponent
-          {...this.childComponentExpectedProps.reduce((previousValue, key) => {
-            if (this.childComponentProps[key]) {
-              previousValue[key] = this.childComponentProps[key];
-            } else if (this.hasOwnProperty(key)) {
-              previousValue[key] = this[key];
-            } else if (typeof this.props[key] !== 'undefined') {
-              previousValue[key] = this.props[key];
-            }
-            return previousValue;
-          }, {})}
+      <ChildComponent {...this.getProps(this.childComponentProps, this.props)}
       />
     );
   }

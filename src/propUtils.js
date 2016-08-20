@@ -47,3 +47,12 @@ export const mapPropTypesToProps = (props) => {
   }
   return propTypes;
 }
+
+export const logWarning = (message) => {
+  const warning = `Warning: ${message}`;
+  if (console.error) {
+      console.error(warning);
+  } else {
+    console.log(warning);
+  }
+}
