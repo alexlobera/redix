@@ -1,7 +1,7 @@
 import React from 'react';
 import { reduceProps, mapPropTypesToProps } from './propUtils';
 
-class DIR extends React.Component {
+class DependencyInjector extends React.Component {
   getChildContext() {
     return reduceProps(this.props);
   }
@@ -10,14 +10,14 @@ class DIR extends React.Component {
   }
 }
 
-class DependencyInjector extends React.Component {
+class DI extends React.Component {
   constructor(props) {
     super(props);
-    DIR.childContextTypes = mapPropTypesToProps(props);
+    DependencyInjector.childContextTypes = mapPropTypesToProps(props);
   }
   render() {
-    return <DIR {...this.props} />;
+    return <DependencyInjector {...this.props} />;
   }
 }
 
-export default DependencyInjector;
+export default DI;
