@@ -1,4 +1,4 @@
-# redix
+# Redix
 
 React Dependency Injection for containers and components
 
@@ -22,7 +22,7 @@ import { Container } from 'redix';
 class PhotoListContainer extends Container {
 ```
 
-2. Your presentational component should specify all the properties it needs by setting its `propTypes`. Example:
+2 . Your presentational component should specify all the properties it needs by setting its `propTypes`. Example:
 
 ```
 const MyComponent = (props) => <h1>Hello {props.planet}</h1>
