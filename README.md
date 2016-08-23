@@ -24,7 +24,7 @@ class PhotoListContainer extends Container {
 
 2. Your presentational component should specify all the properties it needs by setting its `propTypes`. Example:
 
-const MyComponent = (props) => <h1>Hello {props.planet}</h1>
+const MyComponent = (props) => <span>Hello {props.planet}</span>
 //The container will automatically pass these props to the child
 MyComponent.propTypes = {
   planet: React.PropTypes.string
