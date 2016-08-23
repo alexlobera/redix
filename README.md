@@ -22,24 +22,28 @@ import { Container } from 'redix';
 class PhotoListContainer extends Container {
 ```
 
-2 . The constructor of your container should call:
+2. Your presentational component should specify all the properties it needs by setting its `propTypes`. Example:
+
+const MyComponent = (props) => <h1>Hello {props.planet}</h1>
+//The container will automatically pass these props to the child
+MyComponent.propTypes = {
+  planet: React.PropTypes.string
+}
+
+3 . The constructor of your container should call:
 
 - super(props). You must pass props in the super() call since props are used in the parent container's constructor.
 - this.setComponent(PhotoList); Specify the presentational component we want to render.
-- this.setProps({ ... }). Set the props we want to pass down to the presentational component
 
 ```
 class PhotoListContainer extends Container {
   constructor(props) {
       super(props);
-      this.setComponent(PhotoList);
-      this.setProps({
-        photos: props.photos
-      })
+      this.setComponent(PhotoList, { enablePropFuncToThis: props });
   }
 ```
 
-3 . By extending the Redix container, props that are functions become functions of the container. In other words instead of this.props.fetchPhotos you can do this.fetchPhotos. You need to use the this.fetchPhotos if you want to easily mock that function. Why? props are read only, and many functions are injected by third modules that make it very hard to mock, like actions set by the Redux connect mapDispatchToProps.
+By using the second parameter enablePropFuncToThis when setting the component, props that are functions become functions of the container. In other words instead of this.props.fetchPhotos you can do this.fetchPhotos. You need to use the this.fetchPhotos if you want to easily mock that function. Why? props are read only, and many functions are injected by third modules that make it very hard to mock, like actions set by the Redux connect mapDispatchToProps. enablePropFuncToThis is an easy workaround.
 
 ```
 class PhotoListContainer extends Container
@@ -66,7 +70,7 @@ Rendering the 'view' is not the concern of the container, that is the concern of
 ```
 import React from 'react';
 import { createStore } from 'redux';
-import { hookProps, DependencyInjector as DI } from 'redix';
+import { hookProps, DI } from 'redix';
 import { expect } from 'chai';
 import { mount } from 'enzyme';
 import PhotoListContainer from '../../../src/containers/PhotoListContainer';
@@ -90,7 +94,7 @@ describe('PhotoList container', () => {
 		}];
 		const store = createStore(()=>{});
 		sinon.stub(store, 'getState').returns({ photos });
-		
+
 		//Example using Enzyme
 		const container = mount(
 		  <PhotoListContainer
@@ -99,7 +103,7 @@ describe('PhotoList container', () => {
 		  />,
 		  { context: { store: store }}
 		);
-		
+
 		//Example using TestUtils and the generic Dependency Injector
 		TestUtils.renderIntoDocument(
 		<DI store={store}>
@@ -109,7 +113,7 @@ describe('PhotoList container', () => {
 		  />
 		</DI>
 		);
-		
+
 		//assertions
 		expect(injectedFunctions.fetchPhotos.called).to.be.true;
 		expect(test.props.photos).to.be.deep.equal(photos);
@@ -117,19 +121,3 @@ describe('PhotoList container', () => {
 })
 
 ```
-
-## Examples
-
-### Container
-https://github.com/alexlbr/react-bootcamp-2016-august/blob/master/test/unit/containers/PhotoListContainer.spec.js
-
-### Test
-https://github.com/alexlbr/react-bootcamp-2016-august/blob/master/src/containers/PhotoListContainer.js
-
-### Try the example yourself
-
-`git clone git@github.com:alexlbr/react-bootcamp-2016-august.git`
-
-`cd react-bootcamp-2016-august`
-
-`npm i && npm test`
