@@ -67,7 +67,7 @@ class Container extends React.Component {
   }
 
   bindThisFunc(funcName) {
-    if (typeof this[funcName] === 'function' && ) {
+    if (typeof this[funcName] === 'function') {
       this[funcName] = this[funcName].bind(this)
     } else {
       logWarning(`this.${funcName} is not a function`)
