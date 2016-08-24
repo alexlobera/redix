@@ -15,35 +15,13 @@ export const reduceProps = (props) => (
   }, {})
 )
 
-export const getPropType = (prop) => {
-  const jsType = typeof prop;
-  switch (jsType) {
-    case 'array':
-      return React.PropTypes.array;
-    case 'boolean':
-      return React.PropTypes.bool;
-    case 'function':
-      return React.PropTypes.func;
-    case 'number':
-      return React.PropTypes.number;
-    case 'object':
-      return React.PropTypes.object;
-    case 'string':
-      return React.PropTypes.string;
-    case 'symbol':
-      return React.PropTypes.symbol;
-    default:
-      new Error(`React PropType not found for ${jsType}`)
-  }
-}
-
 export const mapPropTypesToProps = (props) => {
   const reducedProps = reduceProps(props);
   const propTypes = {};
   for (let key in reducedProps) {
-    // temp workarround for
+    // workarround for
     // https://facebook.github.io/react/warnings/dont-call-proptypes.html
-    propTypes[key] = ()=>{};//getPropType(reducedProps[key])
+    propTypes[key] = ()=>{};
   }
   return propTypes;
 }
