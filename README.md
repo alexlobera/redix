@@ -49,7 +49,12 @@ By using the second parameter mapPropFuncsToThis when setting the component, pro
 ```
 class PhotosContainer extends Container
 
- // constructor ...
+constructor(props) {
+     super(props);
+     this.setComponent(Photos, { mapPropFuncsToThis: props });
+     this.bindThis('fetchPhotos') // this.bindThis is syntactic sugar from the Redix Container
+     // Instead of this.bindThis('fetchPhotos') you can also do this.fetchPhotos = this.fetchPhotos.bind(this)
+ }
 
 componentDidMount() {
     // instead of this.props.fetchPhotos. This is because we set { mapPropFuncsToThis: props }
