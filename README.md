@@ -4,10 +4,10 @@ React Dependency Injection for containers and components
 
 ## Why I should use this?
 
-- It makes unit testing your container components easier by facilitating <a href="http://www.martinfowler.com/bliki/TestDouble.html">test doubles</a>
 - It enforces good design patterns:
   - <a href="https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0#.duo8qfj2v" target="_blank">Container components for the logic and presentational components for the rendering</a>
   - <a href="https://facebook.github.io/react/docs/reusable-components.html" target="_blank">Reusable Components</a>
+- It makes unit testing your container components easier by facilitating <a href="http://www.martinfowler.com/bliki/TestDouble.html">test doubles</a>
 - It makes the unit tests of your containers run faster because besides "mocking" the container's dependencies, it doesn't render the container's child components (and children of the children, and so on) even if you mount it.
 
 ## How to install
