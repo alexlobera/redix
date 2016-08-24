@@ -19,7 +19,6 @@ export const mapPropTypesToProps = (props) => {
   const reducedProps = reduceProps(props);
   const propTypes = {};
   for (let key in reducedProps) {
-    // workarround for
     // https://facebook.github.io/react/warnings/dont-call-proptypes.html
     propTypes[key] = ()=>{};
   }
