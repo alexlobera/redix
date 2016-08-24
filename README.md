@@ -19,53 +19,51 @@ React Dependency Injection for containers and components
 ```
 import { Container } from 'redix';
 
-class PhotoListContainer extends Container {
+class PhotosContainer extends Container {
 ```
 
-2 . Your presentational component should specify all the properties it needs by setting its `propTypes`. Example:
+2 . Your presentational component should specify all the properties it needs by setting its `propTypes` (well you should do it either you use Redix Container or not, propTypes are a good practice :). Example:
 
 ```
-const MyComponent = (props) => <h1>Hello {props.planet}</h1>
-//The container will automatically pass these props to the child
-MyComponent.propTypes = {
-  planet: React.PropTypes.string
+const Photos = (props) => <h1>He have {props.photos.length} photos</h1>
+//The container will automatically pass the following props to the presentational component
+Photos.propTypes = {
+  photos: React.PropTypes.string
 }
 ```
 
-3 . The constructor of your container should call:
-
-- super(props). You must pass props in the super() call since props are used in the parent container's constructor.
-- this.setComponent(PhotoList); Specify the presentational component we want to render.
+3 . The constructor of your container should call this.setComponent(Photos), passing the presentational component we want to render. Example:
 
 ```
-class PhotoListContainer extends Container {
+class PhotosContainer extends Container {
   constructor(props) {
       super(props);
-      this.setComponent(PhotoList, { enablePropFuncToThis: props });
+      this.setComponent(Photos, { mapPropFuncsToThis: props });
   }
 ```
 
-By using the second parameter enablePropFuncToThis when setting the component, props that are functions become functions of the container. In other words instead of this.props.fetchPhotos you can do this.fetchPhotos. You need to use the this.fetchPhotos if you want to easily mock that function. Why? props are read only, and many functions are injected by third modules that make it very hard to mock, like actions set by the Redux connect mapDispatchToProps. enablePropFuncToThis is an easy workaround.
+By using the second parameter mapPropFuncsToThis when setting the component, props that are functions become functions of the container. In other words instead of `this.props.fetchPhotos` you can do `this.fetchPhotos`. You need to use the `this.fetchPhotos` approach if you want to easily mock that function. Why? props are read only, and many functions are injected by third modules that make it very hard to mock, like actions set by the Redux connect mapDispatchToProps. mapPropFuncsToThis is an easy workaround.
 
 ```
-class PhotoListContainer extends Container
+class PhotosContainer extends Container
 
  // constructor ...
 
 componentDidMount() {
-    this.fetchPhotos(); // instead of this.props.fetchPhotos
+    // instead of this.props.fetchPhotos. This is because we set { mapPropFuncsToThis: props }
+    this.fetchPhotos();
   }
 }
 
 export default connect(
   (state) => ({ photos: state.photos }),
   { fetchPhotos: actions.getPhotos }
-)(PhotoListContainer)
+)(PhotosContainer)
 
 ```
 4 . No render method
 
-Rendering the 'view' is not the concern of the container, that is the concern of the presentational component. Therefore you should not write anything in the render method of the container besides i) what component you want to render and ii) which props you want to pass down. And that is done by the redix Container class.
+Rendering the 'view' is not the concern of the container, that is the concern of the presentational component. Therefore the only thing you should write in the render method of the container is i) what component you want to render and ii) which props you want to pass down. And that is already done by the Redix Container class.
 
 5 . Write a test for your container
 
@@ -75,15 +73,15 @@ import { createStore } from 'redux';
 import { hookProps, DI } from 'redix';
 import { expect } from 'chai';
 import { mount } from 'enzyme';
-import PhotoListContainer from '../../../src/containers/PhotoListContainer';
+import PhotosContainer from '../../../src/containers/PhotosContainer';
 import sinon from 'sinon';
 import TestUtils from "react-addons-test-utils";
 
-describe('PhotoList container', () => {
+describe('Photos container', () => {
     it(`should fetch photos and pass them down to the child component`, () => {
 
 		const test = {};
-		const FakePhotoList = hookProps(test);
+		const FakePhotos = hookProps(test);
 		const injectedFunctions = {
 			fetchPhotos: sinon.spy(() => (Promise.resolve())),
 		};
@@ -99,9 +97,9 @@ describe('PhotoList container', () => {
 
 		//Example using Enzyme
 		const container = mount(
-		  <PhotoListContainer
+		  <PhotosContainer
 			functions={injectedFunctions}
-			component={FakePhotoList}
+			component={FakePhotos}
 		  />,
 		  { context: { store: store }}
 		);
@@ -109,9 +107,9 @@ describe('PhotoList container', () => {
 		//Example using TestUtils and the generic Dependency Injector
 		TestUtils.renderIntoDocument(
 		<DI store={store}>
-		  <PhotoListContainer
+		  <PhotosContainer
 		    functions={injectedFunctions}
-		    component={FakePhotoList}
+		    component={FakePhotos}
 		  />
 		</DI>
 		);
