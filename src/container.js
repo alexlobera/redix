@@ -47,8 +47,31 @@ class Container extends React.Component {
   }
 
   // this is just syntactic sugar
-  bindThis(func) {
-    this[func] = this[func].bind(this);
+  bindThis(funcNames) {
+    const isArray = Object.prototype.toString.call(funcNames) === '[object Array]';
+    if (isArray && funcNames.length === 0) {
+      logWarning('bindThis paramameter can not be an empty array')
+    } else if (isArray) {
+      funcNames.map(funcName => {
+        if (typeof funcName !== 'string') {
+          logWarning('bindThis paramameter has to be an array of strings')
+        } else {
+          this.bindThisFunc(funcName);
+        }
+      })
+    } else if (typeof funcNames === 'string') {
+      this.bindThisFunc(funcNames);
+    } else {
+      logWarning('bindThis paramameter has to be either a string or an array of strings')
+    }
+  }
+
+  bindThisFunc(funcName) {
+    if (typeof this[funcName] === 'function' && ) {
+      this[funcName] = this[funcName].bind(this)
+    } else {
+      logWarning(`this.${funcName} is not a function`)
+    }
   }
 
   render() {
