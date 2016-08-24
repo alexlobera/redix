@@ -2,7 +2,7 @@
 
 React Dependency Injection for containers and components
 
-## Why I should use this?
+## Why should I use this?
 
 - It enforces good design patterns:
   - <a href="https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0#.duo8qfj2v" target="_blank">Container components for the logic and presentational components for the rendering</a>
