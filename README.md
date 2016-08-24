@@ -47,16 +47,15 @@ class PhotosContainer extends Container {
 By using the second parameter mapPropFuncsToThis when setting the component, props that are functions become functions of the container. In other words instead of `this.props.fetchPhotos` you can do `this.fetchPhotos`. You need to use the `this.fetchPhotos` approach if you want to easily mock that function. Why? props are read only, and many functions are injected by third modules that make it very hard to mock, like actions set by the Redux connect mapDispatchToProps. mapPropFuncsToThis is an easy workaround.
 
 ```
-class PhotosContainer extends Container
-
-constructor(props) {
+class PhotosContainer extends Container {
+  constructor(props) {
      super(props);
      this.setComponent(Photos, { mapPropFuncsToThis: props });
      this.bindThis('fetchPhotos') // this.bindThis is syntactic sugar from the Redix Container
      // Instead of this.bindThis('fetchPhotos') you can also do this.fetchPhotos = this.fetchPhotos.bind(this)
- }
+   }
 
-componentDidMount() {
+  componentDidMount() {
     // instead of this.props.fetchPhotos. This is because we set { mapPropFuncsToThis: props }
     this.fetchPhotos();
   }
