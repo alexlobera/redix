@@ -5,6 +5,8 @@ class Container extends React.Component {
   // This is the component that my container is going to render
   setComponent(component, options = {}) {
     this.childComponent = component;
+    this.options = options;
+
     const propTypes = component.propTypes || options.propTypes;
     if (!propTypes) {
       logWarning(`The component you are trying to render using the Redix Container has no propTypes.
@@ -21,14 +23,18 @@ class Container extends React.Component {
     for (let key in propTypes) {
       const addProp = addProps[key];
       if (addProp && typeof addProp === 'string') {
-          src = src + `${key}: ${addProp},`;
+          src += `${key}: ${addProp},`;
       } else if (addProp) {
         logWarning(`{ addProps: {${key}} must be a string, example: 'this.state.user.id'`);
       } else {
-        src = src + `${key}: this['${key}'] || props['${key}'],`;
+        src += `${key}: this['${key}'] || props['${key}'],`;
       }
     }
-    src = src.slice(0, -1) + '}';
+
+    if (propTypes) {
+        src = src.slice(0,-1)
+    }
+    src += '}';
     this.getChildProps = Function('props', src);
 
     const mapPropFuncs = options.mapPropFuncsToThis;
@@ -82,8 +88,9 @@ class Container extends React.Component {
     //    It'll be available as this.childComponent
     // this.props is checked first to enable dependency injection
     const ChildComponent = this.props.component || this.childComponent;
+    const children = this.options.disablePropChildren ? null : this.props.children;
     return (
-      <ChildComponent {...this.getChildProps(this.props)} />
+      <ChildComponent {...this.getChildProps(this.props)} children={children}/>
     );
   }
 }
