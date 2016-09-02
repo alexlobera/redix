@@ -205,7 +205,7 @@ return {testFunc: this['testFunc'] || props['testFunc'],users: this.state.users}
     expect(container.testFunc).to.be.equal(undefined);
   })
 
-  it('should not map props that are not functions to this', () => {
+  it('should not map to this props that are not functions', () => {
     const testFunc = {};
     SomeComponent.propTypes = {
       testFunc: React.PropTypes.object
