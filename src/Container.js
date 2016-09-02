@@ -88,7 +88,7 @@ class Container extends React.Component {
     //    It'll be available as this.childComponent
     // this.props is checked first to enable dependency injection
     const ChildComponent = this.props.component || this.childComponent;
-    const children = this.options.disablePropChildren ? null : this.props.children;
+    const children = this.options.disablePropsChildren ? null : this.props.children;
     return (
       <ChildComponent {...this.getChildProps(this.props)} children={children}/>
     );
