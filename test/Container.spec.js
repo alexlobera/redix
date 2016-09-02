@@ -175,7 +175,7 @@ return {testFunc: this['testFunc'] || props['testFunc'],users: this.state.users}
 }`);
   })
 
-  it('should map props that are functions to this if the option mapPropFuncs is true', () => {
+  it('should map to "this" props that are functions if the option mapPropFuncs is true', () => {
     const testFunc = () => {};
     class SomeContainer extends Container {
       constructor(props) {
@@ -191,7 +191,7 @@ return {testFunc: this['testFunc'] || props['testFunc'],users: this.state.users}
     expect(container.testFunc).to.be.equal(testFunc);
   })
 
-  it('should not map props that are functions to this if the option mapPropFuncs is not true', () => {
+  it('should not map to "this" props that are functions if the option mapPropFuncs is not true', () => {
     const testFunc = () => {};
     class SomeContainer extends Container {
       constructor(props) {
@@ -205,7 +205,7 @@ return {testFunc: this['testFunc'] || props['testFunc'],users: this.state.users}
     expect(container.testFunc).to.be.equal(undefined);
   })
 
-  it('should not map to this props that are not functions', () => {
+  it('should not map to "this" props that are not functions', () => {
     const testFunc = {};
     SomeComponent.propTypes = {
       testFunc: React.PropTypes.object
