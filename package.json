@@ -11,7 +11,7 @@
     "clean": "rimraf lib dist coverage",
     "lint": "eslint src test",
     "prepublish": "npm run clean && npm run build",
-    "test": "mocha './test/**/*.spec.js' --compilers js:babel-register",
+    "test": "mocha './test/**/*.spec.js' --compilers js:babel-register --require ./test/setup.js",
     "test:watch": "npm test -- --watch",
     "test:cov": "babel-node ./node_modules/isparta/bin/isparta cover ./node_modules/mocha/bin/_mocha -- --recursive"
   },
