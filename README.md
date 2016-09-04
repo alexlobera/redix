@@ -130,6 +130,7 @@ describe('Photos container', () => {
 })
 
 ```
+See the [react-redux example](https://github.com/alexlbr/redix/tree/master/examples/react-redux)
 
 ## Examples
 
