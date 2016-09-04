@@ -36,8 +36,11 @@ class PhotoListContainer extends Container {
     api.fetchPhotos()
       .then(photos => {
         const itemsPerPage = 20;
-        this.setState({page: this.state.page + 1});
-        this.setState({photos : photos.slice(this.state.page, itemsPerPage)});
+        const page = this.state.page + 1;
+        this.setState({
+          photos : photos.slice(page, itemsPerPage),
+          page
+        });
       })
       .catch(console.log);
   }
