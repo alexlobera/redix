@@ -133,7 +133,7 @@ describe('Photos container', () => {
 
 ## Examples
 
-Check the folder [/examples](https://github.com/alexlbr/redix/examples)
+Check the folder [/examples](https://github.com/alexlbr/redix/tree/master/examples)
 
 ## Resources
 
