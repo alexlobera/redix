@@ -129,7 +129,6 @@ describe('Photos container', () => {
 		expect(test.props.photos).to.be.deep.equal(photos);
 	})
 })
-
 ```
 See the [react-redux example](https://github.com/alexlbr/redix/tree/master/examples/react-redux)
 
