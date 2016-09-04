@@ -1,5 +1,4 @@
-#Simple React example using Redix containers to easly enable dependency injection
-=====================
+# Simple React example using Redix containers to easly enable dependency injection
 
 This example shows how to create presentational components and container components using the Redix container.
 
