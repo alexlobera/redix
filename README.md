@@ -1,6 +1,6 @@
 # Redix
 
-React Dependency Injection for containers and components
+React Dependency Injection for containers, components, and soon (hopefully) actions
 
 ## Why should I use this?
 
