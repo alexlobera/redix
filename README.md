@@ -51,9 +51,11 @@ class PhotosContainer extends Container {
   constructor(props) {
      super(props);
      this.setComponent(Photos, { mapPropFuncsToThis: props });
-     this.bindThis('fetchPhotos') // this.bindThis is syntactic sugar from the Redix Container
+     this.bindThis('fetchPhotos') // this.bindThis is a helper from the Redix Container
      // Instead of this.bindThis('fetchPhotos') you can also do:
      // this.fetchPhotos = this.fetchPhotos.bind(this)
+     // To bind many methods at once pass an array of strings, example:
+     // this.bindThis(['fetchPhotos', 'fetchUser', 'submitForm'])
    }
 
   componentDidMount() {

@@ -27,9 +27,11 @@
   "keywords": [
     "react",
     "reactjs",
+    "redux",
     "dependency",
     "injection",
-    "context"
+    "context",
+    "store"
   ],
   "author": "Alex Lobera <react@leanjs.com> (http://github.com/alexlbr)",
   "license": "MIT",
