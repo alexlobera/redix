@@ -68,7 +68,6 @@ export default connect(
   (state) => ({ photos: state.photos }),
   { fetchPhotos: actions.getPhotos }
 )(PhotosContainer)
-
 ```
 See the [react-redux example](https://github.com/alexlbr/redix/tree/master/examples/react-redux)
 
