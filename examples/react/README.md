@@ -1,6 +1,6 @@
 # Simple React example using Redix containers to easly enable dependency injection
 
-This example shows how to create presentational components and container components using the Redix container.
+This example shows how to create presentational components and container components using the Redix container (and without Redux).
 
 Check this file src/containers/PhotoListContainer.js to see how to enable dependency injection in your containers for an easier unit testing.
 
