@@ -130,3 +130,12 @@ describe('Photos container', () => {
 })
 
 ```
+
+## Examples
+
+Check the folder [/examples](https://github.com/alexlbr/redix/examples)
+
+## Resources
+
+* [Post (coming soon)]()
+* Ping @alex_lobera on Twitter
