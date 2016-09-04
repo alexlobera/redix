@@ -70,6 +70,8 @@ export default connect(
 )(PhotosContainer)
 
 ```
+See the [react-redux example](https://github.com/alexlbr/redix/tree/master/examples/react-redux)
+
 4 . No render method
 
 Rendering the 'view' is not the concern of the container, that is the concern of the presentational component. Therefore the only thing you should write in the render method of the container is i) what component you want to render and ii) which props you want to pass down. And that is already done by the Redix Container class.
