@@ -8,7 +8,7 @@ class PhotoListContainer extends Container {
 
   constructor(props) {
       super(props);
-      // In order to remove the render method in the container we need to specify What
+      // In order to remove the render method in the container we need to specify what
       // presentational component we want to render by using this.setComponent
       this.setComponent(PhotoList, { mapPropFuncsToThis: props });
       // this.bindThis is a helper from the Redix Container
@@ -21,8 +21,8 @@ class PhotoListContainer extends Container {
   }
   componentDidMount() {
     /*
-      Because we passed the parameter { mapPropFuncsToThis: props } when did this.setComponent,
-      this.props.fetchPhotos is set as this.fetchProps. By calling this.fetchPhotos
+      Because we passed the parameter { mapPropFuncsToThis: props } when we called this.setComponent,
+      this.props.fetchPhotos is now also available as this.fetchProps. By calling this.fetchPhotos
       we can easly mock this function later in the tests;
     */
     this.fetchPhotos().

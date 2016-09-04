@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 const PhotoList = (props) => (
     <div>
-      <h1>Hello photos</h1>
+      <h1>Hello photos <small>(React example)</small></h1>
     	{ props.photos.map(photo => <img key={photo.id} src={photo.thumbnailUrl} />) }
     </div>
 )
