@@ -4,7 +4,7 @@ This example shows how to create presentational components and container compone
 
 Check this file src/containers/PhotoListContainer.js to see how to enable dependency injection in your containers for an easier unit testing.
 
-Check this file test/unit/containers/PhotoListContainer.spec.js to see how to unit test a container that doesn't use `react-redux`. Tests examples using Facebook TestUtils, AirBnB Enzyme and Redix DI
+Check this file test/unit/containers/PhotoListContainer.spec.js to see how to unit test a container that doesn't use `react-redux`. Tests using Facebook TestUtils, AirBnB Enzyme and Redix DI
 
 ## Usage
 
