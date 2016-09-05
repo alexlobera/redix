@@ -23,7 +23,7 @@ class PhotoListContainer extends Container {
     /*
       Because we passed the parameter { mapPropFuncsToThis: props } when we called this.setComponent,
       this.props.fetchPhotos is now also available as this.fetchProps. By calling this.fetchPhotos
-      we can easly mock this function later in the tests;
+      we can easily mock this function later in the tests;
     */
     this.fetchPhotos().
       catch(error => {
