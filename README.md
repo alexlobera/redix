@@ -138,5 +138,5 @@ Check this folder [/examples](https://github.com/alexlbr/redix/tree/master/examp
 
 ## Resources
 
-* [Post (coming soon)]()
+* [Post (React Dependency Injection, write unit tests easily with Redix)](http://alexlobera.com/react-dependency-injection-write-unit-tests-easily-with-redix/)
 * Ping @alex_lobera on Twitter

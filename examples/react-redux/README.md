@@ -25,6 +25,6 @@ npm test
 
 ## Resources
 
-* [Post (coming soon)]()
+* [Post (React Dependency Injection, write unit tests easily with Redix)](http://alexlobera.com/react-dependency-injection-write-unit-tests-easily-with-redix/)
 * [Redix on Github](https://github.com/alexlbr/redix)
 * Ping @alex_lobera on Twitter
