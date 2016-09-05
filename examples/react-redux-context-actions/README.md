@@ -1,7 +1,7 @@
 #Simple React Redux example using Redix containers to easily enable dependency injection
 =====================
 
-This example shows how to create presentational components and container components using the Redix container in a react-redux project.
+This example shows how to create presentational components and container components using the Redix container in a react-redux project. IMPORTANT: THIS EXAMPLE IS NOT USING THE OFFICIAL REACT-REDUX REPOSITORY BUT A FORK THAT ENABLES ACTIONS VIA CONTEXT (<a href="https://github.com/alexlbr/react-redux">https://github.com/alexlbr/react-redux</a>).
 
 Check this file src/containers/PhotoListContainer.js to see how to enable dependency injection in your containers for an easier unit testing.
 
