@@ -75,7 +75,7 @@ See the [react-redux example](https://github.com/alexlbr/redix/tree/master/examp
 
 Rendering the 'view' is not the concern of the container, that is the concern of the presentational component. Therefore the only thing you should write in the render method of the container is i) what component you want to render and ii) which props you want to pass down. And that is already done by the Redix Container class.
 
-5 . Write a test for your container
+5 <a href="#5-example" name="5-example">.</a> Write a test for your container
 
 ```
 import React from 'react';
