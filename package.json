@@ -29,9 +29,13 @@
     "reactjs",
     "redux",
     "dependency",
+    "dependency injection",
     "injection",
     "context",
-    "store"
+    "store",
+    "actions",
+    "unit test",
+    "testing"
   ],
   "author": "Alex Lobera <react@leanjs.com> (http://github.com/alexlbr)",
   "license": "MIT",

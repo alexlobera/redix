@@ -1,9 +1,10 @@
 {
-  "name": "redix-example-react-redux",
+  "name": "redix-example-redux-context-actions",
   "version": "1.0.0",
-  "description": "Redix example (React Dependency Injection for containers, components, etc) using React and Redux",
+  "description": "Redix example (React Dependency Injection for containers, components, etc) using Redux actions in context",
   "scripts": {
-    "start": "node server.js",
+    "start": "npm run build:react-redux && node server.js",
+    "build:react-redux": "cd node_modules/react-redux/ && npm i --ignore-scripts && npm run build:lib && cd ../../",
     "lint": "eslint src",
     "test": "cross-env NODE_ENV=test mocha './test/**/*.spec.js' --slow 0 --compilers js:babel-register --require ./test/unit/setup.js"
   },
@@ -16,16 +17,14 @@
     "reactjs",
     "redix",
     "redux",
-    "example",
+    "context",
     "dependency injection",
+    "actions",
     "unit test",
     "testing"
   ],
   "author": "Alex Lobera <react@leanjs.com> (http://github.com/alexlbr)",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/alexlbr/redix/issues"
-  },
   "homepage": "https://github.com/alexlbr/redix",
   "devDependencies": {
     "babel-core": "^6.0.20",
@@ -53,9 +52,9 @@
   "dependencies": {
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
-    "react-redux": "^4.4.5",
-    "redix": "1.0.21",
-    "redux": "^3.5.2",
+    "react-redux": "git+https://github.com/alexlbr/react-redux.git",
+    "redix": "^1.0.21",
+    "redux": "^3.6.0",
     "redux-promise": "^0.5.3"
   }
 }

@@ -9,8 +9,8 @@ class Container extends React.Component {
 
     const propTypes = component.propTypes || options.propTypes;
     if (!propTypes) {
-      logWarning(`The component you are trying to render using the Redix Container has no propTypes.
-        PropTypes are used to set the props the container will pass to the child component`);
+      logWarning(`You are rendering ${component.name|| 'a component'} that has no propTypes. PropTypes are used by the Redix Container
+      to set the props the container will pass to the child component. If ${component.name|| 'your component'} doesn't use any props then ignore this warning`);
     }
 
     // options.addProps are props that you want to explicitly pass down to the component that the container is rendering.
