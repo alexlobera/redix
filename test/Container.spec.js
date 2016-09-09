@@ -125,7 +125,7 @@ describe('Container setCompnent', () => {
 
     expect(container.getChildProps.toString()).to.be.equal(`function anonymous(props
 /**/) {
-return {testFunc: this['testFunc'] || props['testFunc']}
+return {testFunc: this['testFunc'] || props['testFunc'] || (this.state && this.state['testFunc'])}
 }`);
   })
 
@@ -171,7 +171,7 @@ return {users: this.state.users}
 
     expect(container.getChildProps.toString()).to.be.equal(`function anonymous(props
 /**/) {
-return {testFunc: this['testFunc'] || props['testFunc'],users: this.state.users}
+return {testFunc: this['testFunc'] || props['testFunc'] || (this.state && this.state['testFunc']),users: this.state.users}
 }`);
   })
 

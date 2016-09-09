@@ -27,7 +27,7 @@ class Container extends React.Component {
       } else if (addProp) {
         logWarning(`{ addProps: {${key}} must be a string, example: 'this.state.user.id'`);
       } else {
-        src += `${key}: this['${key}'] || props['${key}'],`;
+        src += `${key}: this['${key}'] || props['${key}'] || (this.state && this.state['${key}']),`;
       }
     }
 
